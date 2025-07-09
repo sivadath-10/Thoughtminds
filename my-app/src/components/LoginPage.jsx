@@ -1,4 +1,8 @@
+import React, { useState } from 'react';
+import '../App.css';
 
+import { FaUser } from "react-icons/fa";
+import { FaLock } from "react-icons/fa";
 const LoginPage = () => {
   return (
     <div className='App'>
