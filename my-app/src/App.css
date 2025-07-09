@@ -7,7 +7,7 @@
 }
 
 body {
-  margin: 0;
+  margin: 100px;
   font-family: 'poppins', sans-serif;
   -webkit-font-smoothig: antialiased;
   -moz-osx-font-smoothig: grayscale;
@@ -15,7 +15,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100px;
-  background: url('./assets/vimal-s-ZhVUAUc8V4s-unsplash.jpg')no-repeat;
+  background: url('./assets/pexels-eberhardgross-1421903.jpg')no-repeat;
   background-size: cover;
   background-position: center;
 }
@@ -57,13 +57,12 @@ body {
 .input-box .icon{
   position: absolute;
   right: 20px;
-  top: 50px;
+  top: 24px;
   transform: translateY(-50%);
   font-size:16;
 }
 .App .remember-forgot {
   display: flex;
-  justify-content: space-between;
   font-size: 14.5px;
   margin: -15px 0 15px;
   

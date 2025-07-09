@@ -21,7 +21,7 @@ const App = () => {
         </div>
         <button type="submit">login</button>
         <div className="register-link">
-          <p>don't have an account? <a href="#">register</a></p>
+          <p>Don't have an account? <a href="#">register</a></p>
         </div>
       </form>
     </div>
