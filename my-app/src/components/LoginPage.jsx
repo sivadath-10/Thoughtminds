@@ -1,25 +1,40 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../App.css';
-
-import { FaUser } from "react-icons/fa";
-import { FaLock } from "react-icons/fa";
+import { FaUser, FaLock } from "react-icons/fa";
 const LoginPage = () => {
+  const [username, setUsername] = useState('');
+  const navigate = useNavigate();
+  const handleLogin = (e) => {
+    e.preventDefault();
+    if (username.trim() !== '') {
+      navigate('/profile', { state: { username } });
+    } else {
+      alert("Enter a valid username.");
+    }
+  };
   return (
     <div className='App'>
-      <form action="">
+      <form onSubmit={handleLogin}>
         <h1>Login</h1>
         <div className="input-box">
-          <input type="text" placeholder='username' required />
+          <input
+            type="text"
+            placeholder="Username"
+            required
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
           <FaUser className='icon' />
         </div>
         <div className="input-box">
-          <input type="password" placeholder="password" required />
-         <FaLock className='icon'/>
+          <input type="password" placeholder="Password" required />
+          <FaLock className='icon' />
         </div>
         <div className="remember-forgot">
           <a href="#">forgot password</a>
         </div>
-        <button type="submit">login</button>
+        <button type="submit">Login</button>
         <div className="register-link">
           <p>Don't have an account? <a href="#">register</a></p>
         </div>
@@ -28,4 +43,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage ;
+export default LoginPage;
