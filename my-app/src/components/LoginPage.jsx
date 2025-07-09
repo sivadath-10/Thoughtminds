@@ -1,8 +1,5 @@
-import React, { useState } from 'react';
-import './App.css';
-import { FaUser } from "react-icons/fa";
-import { FaLock } from "react-icons/fa";
-const App = () => {
+
+const LoginPage = () => {
   return (
     <div className='App'>
       <form action="">
@@ -27,4 +24,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default LoginPage ;
