@@ -3,15 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import '../App.css';
 import { FaUser, FaLock } from "react-icons/fa";
 const LoginPage = () => {
-  const [username, setUsername] = useState('');
-  const navigate = useNavigate();
-  const handleLogin = (e) => {
-    e.preventDefault();
-    if (username.trim() !== '') {
-      navigate('/profile', { state: { username } });
-    } else {
-      alert("Enter a valid username.");
-    }
+
   };
   return (
     <div className='App'>
@@ -41,6 +33,6 @@ const LoginPage = () => {
       </form>
     </div>
   );
-};
+
 
 export default LoginPage;
