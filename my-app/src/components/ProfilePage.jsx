@@ -8,6 +8,7 @@ const ProfilePage = () => {
   return (
     <div className="App">
       <h1>Welcome to your Profile</h1>
+      <h2>Hey👋, {username}!</h2>
     </div>
   );
 };
