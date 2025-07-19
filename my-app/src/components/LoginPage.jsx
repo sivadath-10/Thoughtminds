@@ -22,7 +22,7 @@ const LoginPage = () => {
     const validPassword = `${username}@123`;
 
     if (matchedUser && password === validPassword) {
-      navigate('/profile', { state: { username } });
+      navigate(`/profile?username=${encodeURIComponent(matchedUser.username)}&email=${encodeURIComponent(matchedUser.email)}`);
     } else {
       alert("Invalid username or password.");
     }

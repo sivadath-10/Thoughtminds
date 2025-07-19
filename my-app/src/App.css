@@ -15,7 +15,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100px;
-  background: url('./assets/pexels-eberhardgross-1421903.jpg')no-repeat;
+  background: url('./assets/pexels-eberhardgross-1421903.jpg');
   background-size: cover;
   background-position: center;
 }
