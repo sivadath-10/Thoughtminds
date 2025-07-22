@@ -1,50 +1,48 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { getUserFromStorage } from '../storage.js';
 import '../profile.css';
 
-const ProfilePage = () => {
+const ProfileField = ({ label, value }) => (
+  <div className="profile-field">
+    <label>{label}</label>
+    <input type="text" value={value} readOnly />
+  </div>
+);
+
+const InitialCircle = ({ initials }) => (
+  <div className="initial-circle">
+    {initials}
+  </div>
+);
+
+const Profile = () => {
   const [user, setUser] = useState(null);
-   const navigate = useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/users/1')
-      .then(res => res.json())
-      .then(data => setUser(data))
-      .catch(err => console.error('API Error:', err));
-  }, []);
+    const storedUser = getUserFromStorage();
+    if (!storedUser) {
+      navigate('/');
+    } else {
+      setUser(storedUser);
+    }
+  }, [navigate]);
 
-  if (!user) return <p>Loading...</p>;
+  if (!user) {
+    return <div className="loading">Loading profile...</div>;
+  }
 
-  const getInitials = (fullName) => {
-    if (!fullName) return '?';
-    const parts = fullName.trim().split(' ');
-    const first = parts[0]?.charAt(0).toUpperCase() || '';
-    const last = parts[1]?.charAt(0).toUpperCase() || '';
-    return first + last;
-  };
-
-  const handleLogout = () => {
-
-   navigate('/LoginPage.jsx')
-  };
+  const nameParts = user.name.split(' ');
+  const initials = nameParts.map(part => part[0]).join('').toUpperCase();
 
   return (
-    <>
-
-      <div className="navbar">
-        <div className="navbar-left">
-          <div className="navbar-avatar">{getInitials(user.name)}</div>
-          <span className="navbar-username">{user.name}</span>
-        </div>
-        <button className="logout-btn" onClick={handleLogout}>Logout</button>
-      </div>
-      <div className="profilepage">
-        <div className="profile-sidebar">
-          <div className="initial-avatar">
-            {getInitials(user.name)}
-          </div>
-          <p>{user.name}</p>
-          <p className="avatar-note">Your profile initials</p>
+    <div className="profile-page">
+      <div className="profile-container">
+        <div className="profile-left">
+          <InitialCircle initials={initials} />
+          <h2>{user.name}</h2>
+          <p>Your profile initials</p>
         </div>
 
         <div className="profile-details">
@@ -102,8 +100,8 @@ const ProfilePage = () => {
           </form>
         </div>
       </div>
-    </>
+      </div>
   );
 };
 
-export default ProfilePage;
+export default Profile;
