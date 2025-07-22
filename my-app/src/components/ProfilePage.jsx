@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Header from '../components/Header.jsx';
 import { getUserFromStorage } from '../storage.js';
 import '../profile.css';
 
@@ -38,6 +39,7 @@ const Profile = () => {
 
   return (
     <div className="profile-page">
+      <Header user={user}></Header>
       <div className="profile-container">
         <div className="profile-left">
           <InitialCircle initials={initials} />
