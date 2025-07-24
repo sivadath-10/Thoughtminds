@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header.jsx';
-import { getUserFromStorage } from '../storage.js';
-import '../profile.css';
+import { getUserFromStorage } from '../function/Utils.js';
+import '../styles/profile.css';
 
 const ProfileField = ({ label, value }) => (
   <div className="profile-field">
@@ -38,8 +38,9 @@ const Profile = () => {
   const initials = nameParts.map(part => part[0]).join('').toUpperCase();
 
   return (
-    <div className="profile-page">
+    <div>
       <Header user={user}></Header>
+    <div className="profile-page">
       <div className="profile-container">
         <div className="profile-left">
           <InitialCircle initials={initials} />
@@ -101,6 +102,7 @@ const Profile = () => {
             </div>
           </form>
         </div>
+      </div>
       </div>
       </div>
   );

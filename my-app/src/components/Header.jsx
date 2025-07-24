@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import '../Header.css';
+import '../styles/Header.css';
+import { getInitials } from '../function/getInitials.js';
 
 const Header = ({user}) => {
     const navigate = useNavigate();
@@ -9,11 +10,7 @@ const Header = ({user}) => {
 
     };
     
-    const getInitials = (name) =>{
-        if (!name) return '';
-       const nameParts = name.trim().split(' ');
-    return nameParts[0][0].toUpperCase() + (nameParts[1]?.[0]?.toUpperCase() || '');
-  };
+
     return (
     <nav className="header">
       <div className="user-info">
