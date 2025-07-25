@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../App.css';
+import '../styles/App.css';
 import { FaUser, FaLock } from "react-icons/fa";
 
 const LoginPage = () => {
@@ -12,17 +12,19 @@ const LoginPage = () => {
   useEffect(() => {
     fetch('https://jsonplaceholder.typicode.com/users')
       .then((res) => res.json())
-      .then((data) => setUsers(data))
-  },);
+      .then((data) => setUsers(data));
+  }, []);
 
   const handleLogin = (e) => {
     e.preventDefault();
 
-    const matchedUser = users.find((user) =>username);
+    const matchedUser = users.find((user) => user.username === username);
     const validPassword = `${username}@123`;
 
     if (matchedUser && password === validPassword) {
-      navigate('/profile', { state: { username } });
+
+      localStorage.setItem('user', JSON.stringify(matchedUser));
+      navigate('/profile');
     } else {
       alert("Invalid username or password.");
     }
@@ -34,23 +36,35 @@ const LoginPage = () => {
         <h1>Login</h1>
 
         <div className="input-box">
-          <input type="text" placeholder="Username" required value={username} onChange={(e) => setUsername(e.target.value)}/>
+          <input
+            type="text"
+            placeholder="Username"
+            required
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
           <FaUser className='icon' />
         </div>
 
         <div className="input-box">
-          <input type="password" placeholder="Password" requiredvalue={password} onChange={(e) => setPassword(e.target.value)}/>
+          <input
+            type="password"
+            placeholder="Password"
+            required
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
           <FaLock className='icon' />
         </div>
 
         <div className="remember-forgot">
-          <a href="#">forgot password</a>
+          <a href="#">Forgot password?</a>
         </div>
 
         <button type="submit">Login</button>
 
         <div className="register-link">
-          <p>Don't have an account? <a href="#">register</a></p>
+          <p>Don't have an account? <a href="#">Register</a></p>
         </div>
       </form>
     </div>
