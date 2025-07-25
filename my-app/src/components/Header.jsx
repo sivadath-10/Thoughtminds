@@ -3,11 +3,15 @@ import { useNavigate } from "react-router-dom";
 import '../styles/Header.css';
 import { getInitials } from '../function/getInitials.js';
 
-const Header = ({user}) => {
+const Header = ({ user }) => {
     const navigate = useNavigate();
-    const handleLogout = () => {
-        navigate('/');
 
+    const handleLogout = () => {
+        localStorage.removeItem('user'); 
+        navigate('/');
+    };
+    const handleMyPost = () => {
+    navigate('/myposts');
     };
     
 
@@ -17,10 +21,12 @@ const Header = ({user}) => {
         <div className="user-avatar">{getInitials(user?.name)}</div>
         
         <span className="user-name">{user?.name}</span>
-      </div>
-      <button className="logout-button" onClick={handleLogout}>
-        Logout
-      </button>
+      </div >
+      <div className="Header-buttons">
+        <button className="my-post-button" onClick={handleMyPost}>My Post</button>
+      <button className="logout-button" onClick={handleLogout}>Logout</button>
+     </div>
+
     </nav>
     );
 };
