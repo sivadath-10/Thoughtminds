@@ -21,14 +21,17 @@ const Profile = () => {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const storedUser = getUserFromStorage();
-    if (!storedUser) {
-      navigate('/');
-    } else {
-      setUser(storedUser);
-    }
-  }, [navigate]);
+useEffect(() => {
+  const storedUser = getUserFromStorage();
+  console.log("Stored user from localStorage:", storedUser); // ✅ Debug here
+
+  if (!storedUser) {
+    navigate('/');
+  } else {
+    setUser(storedUser);
+  }
+}, [navigate]);
+
 
   if (!user) {
     return <div className="loading">Loading profile...</div>;
@@ -38,17 +41,16 @@ const Profile = () => {
   const initials = nameParts.map(part => part[0]).join('').toUpperCase();
 
   return (
-    <div>
-      <Header user={user}></Header>
-    <div className="profile-page">
-      <div className="profile-container">
-        <div className="profile-left">
-          <InitialCircle initials={initials} />
-          <h2>{user.name}</h2>
-          <p>Your profile initials</p>
-        </div>
+  <div className="profile-page">
+    <Header user={user}></Header>
+    <div className="profile-container">
+      <div className="profile-left">
+        <InitialCircle initials={initials} />
+        <h2>{user.name}</h2>
+        <p>Your profile initials</p>
+      </div>
 
-        <div className="profile-details">
+      <div className="profile-details">
           <h2>Account Details</h2>
           <p><strong>Username:</strong> {user.username}</p>
           <form className="details-form">
@@ -104,7 +106,7 @@ const Profile = () => {
         </div>
       </div>
       </div>
-      </div>
+     
   );
 };
 
