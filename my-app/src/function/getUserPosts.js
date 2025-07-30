@@ -1,4 +1,3 @@
-// src/function/getUserPosts.js
 export const getUserPosts = async (userId) => {
   if (!userId) {
     console.warn('No userId provided to getUserPosts');

@@ -13,6 +13,9 @@ const Header = ({ user }) => {
     const handleMyPost = () => {
     navigate('/myposts');
     };
+    const handleAllpost = () =>{
+      navigate('/Allpost')
+    }
     
 
     return (
@@ -23,6 +26,7 @@ const Header = ({ user }) => {
         <span className="user-name">{user?.name}</span>
       </div >
       <div className="Header-buttons">
+        <button className="Allpost" onClick={handleAllpost}>All post</button>
         <button className="my-post-button" onClick={handleMyPost}>My Post</button>
       <button className="logout-button" onClick={handleLogout}>Logout</button>
      </div>
