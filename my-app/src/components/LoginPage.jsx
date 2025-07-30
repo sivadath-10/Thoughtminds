@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styles/App.css';
+import '../styles/LoginPage.css';
 import { FaUser, FaLock } from "react-icons/fa";
 
 const LoginPage = () => {
@@ -31,6 +31,7 @@ const LoginPage = () => {
   };
 
   return (
+    <div className='login-bg'>
     <div className='App'>
       <form onSubmit={handleLogin}>
         <h1>Login</h1>
@@ -67,6 +68,7 @@ const LoginPage = () => {
           <p>Don't have an account? <a href="#">Register</a></p>
         </div>
       </form>
+    </div>
     </div>
   );
 };
